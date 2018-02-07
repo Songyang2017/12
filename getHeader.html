@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>getHeader</title>
+</head>
+<body>
+
+
+
+<div id="app">
+	<div v-for='x in msg'>
+		<div v-for='y in x'>
+			{{y.desc}}
+			<div v-for="z in y.photourl">
+				<!-- <div v-for="x in z"></div> -->
+				
+				<img width="100%" :src="z.url" alt="">
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.js"></script>
+<script src="FeHelper-20180207234646.json"></script>
+<script src="https://cdn.bootcss.com/vue/2.5.12/vue.min.js"></script>
+<script>
+console.log(go);
+var wai=[],zh=[];
+for(let i=0;i<go.data.vFeeds.length;i++){
+	wai.push(go.data.vFeeds[i].pic.picdata.pic)
+	for(let k;k<go.data.vFeeds[0].pic.picdata.pic.length;k++){
+		zh.push(go.data.vFeeds[i].pic.picdata.pic[k])
+	}
+}
+
+console.log(wai);
+
+console.log(zh);
+var app=new Vue({
+	el:'#app',
+	data:{
+		msg:wai
+	}
+})
+// var path="https://mobile.qzone.qq.com/list";
+// var param={'qzonetoken':'0d86369f9ba0c3f49683353c32d46d4f06ae65fb2e2270bbc68e2e83f24413ff630c0c5deca62afcc368d98459e90557a19d',
+// 'g_tk':'1795727027',
+// 'action':'1',
+// 'sid':'gM5mHe65mn+91l0/pYdiXd2a1DFOj47J5c2ab6110201==',
+// 'res_uin':'2511332065',
+// 'list_type':'album',
+// 'refresh_type':'1',
+// 'format':'json'}
+// $.ajax({
+// 	url:'FeHelper-20180207234646.json',
+// 	data:param,
+// 	type:'get',
+// 	dataType:'jsonp',
+// 	jsonp:'success_jsonpCallback',
+// 	jsonpCallback:'success_jsonpCallback',
+// 	success:function(data){
+// 		console.log(data);
+// 	}
+// })	
+// function success_jsonpCallback(data){
+// 	console.log(data);
+// }
+</script>
+</body>
+</html>
